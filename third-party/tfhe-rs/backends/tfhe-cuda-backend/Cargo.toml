@@ -1,0 +1,26 @@
+[package]
+name = "tfhe-cuda-backend"
+version = "0.15.0"
+edition = "2021"
+authors = ["Zama team"]
+license = "BSD-3-Clause-Clear"
+description = "Cuda implementation of TFHE-rs primitives."
+homepage = "https://www.zama.org/"
+documentation = "https://docs.zama.org/tfhe-rs"
+repository = "https://github.com/zama-ai/tfhe-rs"
+readme = "README.md"
+keywords = ["fully", "homomorphic", "encryption", "fhe", "cryptography"]
+
+[dependencies]
+tfhe-cuda-common = { version = "0.1.0", path = "../tfhe-cuda-common" }
+
+[build-dependencies]
+cmake.workspace = true
+pkg-config.workspace = true
+bindgen.workspace = true
+
+[features]
+experimental-multi-arch = []
+profile = ["tfhe-cuda-common/profile"]
+debug = ["tfhe-cuda-common/debug"]
+debug-fake-multi-gpu = []
