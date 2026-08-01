@@ -1,0 +1,37 @@
+#include "shift_and_rotate.cuh"
+
+uint64_t scratch_cuda_shift_and_rotate_64_inplace_async(
+    CudaStreamsFFI streams, int8_t **mem_ptr,
+    CudaLweBootstrapKeyParamsFFI bsk_params,
+    CudaLweKeyswitchKeyParamsFFI ksk_params, uint32_t num_blocks,
+    uint32_t message_modulus, uint32_t carry_modulus,
+    SHIFT_OR_ROTATE_TYPE shift_type, bool is_signed, bool allocate_gpu_memory,
+    PBS_MS_REDUCTION_T noise_reduction_type) {
+  int_radix_params params(bsk_params, ksk_params, message_modulus,
+                          carry_modulus, noise_reduction_type);
+
+  return scratch_cuda_shift_and_rotate<uint64_t>(
+      CudaStreams(streams), (int_shift_and_rotate_buffer<uint64_t> **)mem_ptr,
+      num_blocks, params, shift_type, is_signed, allocate_gpu_memory);
+}
+
+void cuda_shift_and_rotate_64_inplace_async(
+    CudaStreamsFFI streams, CudaRadixCiphertextFFI *lwe_array,
+    CudaRadixCiphertextFFI const *lwe_shift, int8_t *mem_ptr, void *const *bsks,
+    void *const *ksks) {
+
+  host_shift_and_rotate_inplace<uint64_t>(
+      CudaStreams(streams), lwe_array, lwe_shift,
+      (int_shift_and_rotate_buffer<uint64_t> *)mem_ptr, bsks,
+      (uint64_t **)(ksks));
+}
+
+void cleanup_cuda_shift_and_rotate_64_inplace(CudaStreamsFFI streams,
+                                              int8_t **mem_ptr_void) {
+  int_shift_and_rotate_buffer<uint64_t> *mem_ptr =
+      (int_shift_and_rotate_buffer<uint64_t> *)(*mem_ptr_void);
+
+  mem_ptr->release(CudaStreams(streams));
+  delete mem_ptr;
+  *mem_ptr_void = nullptr;
+}
