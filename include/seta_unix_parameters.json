@@ -1,0 +1,95 @@
+{
+  "name": "seta-unix",
+  "entries": [
+    {
+      "baseline": {
+        "label": "SetA-I",
+        "security_bits": 80,
+        "polynomial_size": 1024,
+        "lwe_dimension": 500,
+        "glwe_dimension": 1,
+        "pbs_level": 2
+      },
+      "optimized": {
+        "label": "UniX-I",
+        "security_bits": 80,
+        "polynomial_size": 512,
+        "lwe_dimension": 500,
+        "glwe_dimension": 2,
+        "pbs_level": 2
+      }
+    },
+    {
+      "baseline": {
+        "label": "SetA-II",
+        "security_bits": 110,
+        "polynomial_size": 1024,
+        "lwe_dimension": 630,
+        "glwe_dimension": 1,
+        "pbs_level": 3
+      },
+      "optimized": {
+        "label": "UniX-II",
+        "security_bits": 110,
+        "polynomial_size": 512,
+        "lwe_dimension": 618,
+        "glwe_dimension": 2,
+        "pbs_level": 3
+      }
+    },
+    {
+      "baseline": {
+        "label": "SetA-III",
+        "security_bits": 128,
+        "polynomial_size": 2048,
+        "lwe_dimension": 592,
+        "glwe_dimension": 1,
+        "pbs_level": 3
+      },
+      "optimized": {
+        "label": "UniX-III",
+        "security_bits": 128,
+        "polynomial_size": 512,
+        "lwe_dimension": 577,
+        "glwe_dimension": 4,
+        "pbs_level": 3
+      }
+    },
+    {
+      "baseline": {
+        "label": "SetA-IV",
+        "security_bits": 128,
+        "polynomial_size": 2048,
+        "lwe_dimension": 742,
+        "glwe_dimension": 1,
+        "pbs_level": 1
+      },
+      "optimized": {
+        "label": "UniX-IV",
+        "security_bits": 128,
+        "polynomial_size": 512,
+        "lwe_dimension": 726,
+        "glwe_dimension": 4,
+        "pbs_level": 1
+      }
+    },
+    {
+      "baseline": {
+        "label": "SetA-V",
+        "security_bits": 128,
+        "polynomial_size": 4096,
+        "lwe_dimension": 769,
+        "glwe_dimension": 1,
+        "pbs_level": 1
+      },
+      "optimized": {
+        "label": "UniX-V",
+        "security_bits": 128,
+        "polynomial_size": 512,
+        "lwe_dimension": 749,
+        "glwe_dimension": 8,
+        "pbs_level": 1
+      }
+    }
+  ]
+}
