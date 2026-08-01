@@ -1,0 +1,7 @@
+/third-party/tfhe-rs/target/
+/experiments/generated/
+**/__pycache__/
+*.pyc
+*.exe
+*.pdb
+*.ilk
